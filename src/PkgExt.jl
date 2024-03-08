@@ -4,7 +4,7 @@ import Pkg
 # Write your package code here.
 
 export all_pkgs, install_deps
-export allPkgs, installDeps, setPyEnv
+export allPkgs, installDeps, setPyEnv, pipInstall
 
 function all_pkgs()
     deps = Pkg.dependencies()
@@ -72,5 +72,10 @@ function setPyEnv(curdir = pwd())
     ENV["PYCALL_JL_RUNTIME_PYTHON"] = path
     Pkg.build("PyCall")
 end
+
+function pipInstall(pkg::String)
+    run(`pip install $pkg`)
+end
+
 
 end
