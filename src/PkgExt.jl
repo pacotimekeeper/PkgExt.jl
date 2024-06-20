@@ -7,7 +7,6 @@ export all_pkgs, install_deps
 export allPkgs, installDeps, setPyEnv
 export pipInstall, pipInstalled, pipList
 
-
 function all_pkgs()
     deps = Pkg.dependencies()
     installs = Dict{String, VersionNumber}()
@@ -41,6 +40,7 @@ function set_py_env(curdir = pwd())
     Pkg.build("PyCall")
 end
 
+## CamelCase functions
 function allPkgs()
     deps = Pkg.dependencies()
     installs = Dict{String, VersionNumber}()
