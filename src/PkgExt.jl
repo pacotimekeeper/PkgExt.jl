@@ -4,7 +4,8 @@ import Pkg
 # Write your package code here.
 
 export all_pkgs, install_deps
-export allPkgs, installDeps, setPyEnv, pipInstall
+export allPkgs, installDeps, setPyEnv
+export pipInstall, pipInstalled, pipList
 
 function all_pkgs()
     deps = Pkg.dependencies()
@@ -77,5 +78,25 @@ function pipInstall(pkg::String)
     run(`pip install $pkg`)
 end
 
+function pipList()
+    io = IOBuffer()
+    cmd = pipeline(`pip list`; stdout=io, stderr=devnull)
+    run(cmd)
+    str = String(take!(io))
+    pkgVersionPairs = split(str)[5:end]
+    # return pkgVersionPairs
+    # noOfPairs = length(v)/2 |> Int
+    pkgVersionDict = Dict{String, String}()
+    for i in 1:length(pkgVersionPairs)
+        iszero(i%2) && continue
+        pkgVersionDict[pkgVersionPairs[i]] = pkgVersionPairs[i+1]
+    end
+    pkgVersionDict
+    # for i in 1:noOfPairs
+    #     println(pkgsVersionPairs[1], pkgsVersionPairs[2])
+    # end
+end
+
+pipInstalled(pkg::String) = haskey(pipList(), "xlrd")
 
 end
