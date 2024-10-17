@@ -67,7 +67,7 @@ function setPyEnv(curdir = pwd())
     haskey(allPkgs(), "PyCall") || Pkg.add("PyCall")
 
     # give the path of python executable
-    path = Sys.iswindows() ? joinpath(curdir, "Scripts", "python.exe") : joinpath(curdir, "bin", "python3")
+    path = Sys.iswindows() ? joinpath(curdir, "Scripts", "python.exe") : joinpath(curdir, "bin", "python")
 
     ENV["PYTHON"] = path
     ENV["PYCALL_JL_RUNTIME_PYTHON"] = path
