@@ -40,6 +40,18 @@ function set_py_env(curdir = pwd())
     Pkg.build("PyCall")
 end
 
+function allDependencies()
+    deps = Pkg.dependencies()
+    installs = Dict{String, VersionNumber}()
+    for (_, dep) in deps
+        dep.is_direct_dep || continue
+        dep.version === nothing && continue
+        installs[dep.name] = dep.version::VersionNumber
+    end
+    return installs
+end
+
+
 ## CamelCase functions
 function allPkgs()
     deps = Pkg.dependencies()
@@ -51,6 +63,8 @@ function allPkgs()
     end
     return installs
 end
+
+function
 
 function installDeps(pkgs::AbstractVector{String})
     installedpackages = allPkgs()
