@@ -7,6 +7,18 @@ export all_pkgs, install_deps
 export allPkgs, installDeps, setPyEnv
 export pipInstall, pipInstalled, pipList
 
+function allPkgs()
+    deps = Pkg.dependencies()
+    installs = Dict{String, VersionNumber}()
+    for (_, dep) in deps
+        dep.is_direct_dep || continue
+        dep.version === nothing && continue
+        installs[dep.name] = dep.version::VersionNumber
+    end
+    return installs
+end
+
+
 function all_pkgs()
     deps = Pkg.dependencies()
     installs = Dict{String, VersionNumber}()
