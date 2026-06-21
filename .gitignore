@@ -40,9 +40,6 @@ Manifest.toml
 *.swo
 *~
 
-# Source Control
-.github/
-
 # Operating System generated files
 .DS_Store
 .DS_Store?
