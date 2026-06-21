@@ -79,4 +79,7 @@ end
 
 pipinstalled(pkg::String) = haskey(piplist(), "xlrd")
 
+function newfunc()
+    println("hello")
+end
 end
