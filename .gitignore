@@ -4,3 +4,53 @@
 /Manifest.toml
 /docs/Manifest.toml
 /docs/build/
+
+# ==========================================
+# Julia / Pkg.jl specific ignores
+# ==========================================
+
+# Build artifacts from PackageCompiler or other builds
+build/
+target/
+dist/
+
+# Compiled artifacts
+*.ji
+*.so
+*.dylib
+*.dll
+*.pyc
+*.pyo
+
+# Manifest files (Lock files) - Let users generate their own.
+# We track Project.toml to know dependencies, but not the specific versions locked here.
+Manifest.toml
+
+# Jupyter notebooks (Optional: Remove if you want to version control notebooks)
+*.ipynb_checkpoints/
+
+# ==========================================
+# System / Editor specific ignores
+# ==========================================
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Source Control
+.github/
+
+# Operating System generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Julia REPL history/history files (Optional)
+.julia_history
